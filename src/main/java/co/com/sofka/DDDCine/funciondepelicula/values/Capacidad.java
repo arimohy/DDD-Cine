@@ -2,9 +2,18 @@ package co.com.sofka.DDDCine.funciondepelicula.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class Capacidad implements ValueObject<Long> {
+import java.util.Objects;
+
+public class Capacidad implements ValueObject<String> {
+    private final String value;
+    public Capacidad(String value){
+        this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("la fecha no puede estar vacia");
+        }
+    }
     @Override
-    public Long value() {
-        return null;
+    public String value() {
+        return value();
     }
 }
