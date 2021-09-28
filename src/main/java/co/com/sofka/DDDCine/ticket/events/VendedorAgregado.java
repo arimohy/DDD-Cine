@@ -15,4 +15,16 @@ public class VendedorAgregado extends DomainEvent {
         this.nombre=nombre;
         this.email=email;
     }
+
+    public VendedorId getVendedorId() {
+        return vendedorId;
+    }
+
+    public Nombre getNombre() {
+        return nombre;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
 }

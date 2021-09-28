@@ -4,9 +4,7 @@ import co.com.sofka.DDDCine.funciondepelicula.values.*;
 import co.com.sofka.DDDCine.generics.value.Email;
 import co.com.sofka.DDDCine.generics.value.Nombre;
 import co.com.sofka.DDDCine.ticket.events.*;
-import co.com.sofka.DDDCine.ticket.values.ClienteId;
-import co.com.sofka.DDDCine.ticket.values.TicketId;
-import co.com.sofka.DDDCine.ticket.values.VendedorId;
+import co.com.sofka.DDDCine.ticket.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 
@@ -60,6 +58,19 @@ public class Ticket extends AggregateEvent<TicketId> {
     public void actualizarEmailDeVendedor(VendedorId vendedorId,Email email){
         appendChange(new EmailDeVendedorActualizado(vendedorId,email)).apply();
     }
+    public void agregarReciboDePago(ReciboDePagoId reciboDePagoId, TipodePago tipodePago, Precio precio){
+        Objects.requireNonNull(reciboDePagoId);
+        Objects.requireNonNull(tipodePago);
+        Objects.requireNonNull(precio);
+        appendChange(new ReciboDePagoAgregado(reciboDePagoId,tipodePago,precio)).apply();
+    }
+    public void actualizarTipoDeReciboDePago(ReciboDePago reciboDePago,TipodePago tipodePago){
+        appendChange(new TipoDeReciboDePagoActualizado(reciboDePago,tipodePago)).apply();
+    }
+    public void actualizarPrecioDeReciboDePago(ReciboDePago reciboDePago,Precio precio){
+        appendChange(new PrecioDeReciboDePagoActualizado(reciboDePago,precio)).apply();
+    }
     public Cliente cliente(){return cliente;}
     public Vendedor vendedor(){return vendedor;}
+    public ReciboDePago reciboDePago(){return reciboDePago;}
 }

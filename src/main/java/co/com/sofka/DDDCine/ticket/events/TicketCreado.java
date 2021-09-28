@@ -15,4 +15,16 @@ public class TicketCreado extends DomainEvent {
         this.cliente=cliente;
         this.reciboDePago=reciboDePago;
     }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public ReciboDePago getReciboDePago() {
+        return reciboDePago;
+    }
 }
