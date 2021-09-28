@@ -4,12 +4,12 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Nombre implements ValueObject<String> {
+public class Email implements ValueObject<String> {
     private final String value;
-    public Nombre(String value){
+    public Email(String value){
         this.value= Objects.requireNonNull(value);
         if(this.value.isBlank()){
-            throw new IllegalArgumentException("el nombre no puede estar vacio");
+            throw new IllegalArgumentException("el email no puede estar vacion");
         }
     }
 
@@ -22,8 +22,8 @@ public class Nombre implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Nombre nombre = (Nombre) o;
-        return Objects.equals(value, nombre.value);
+        Email email = (Email) o;
+        return Objects.equals(value, email.value);
     }
 
     @Override

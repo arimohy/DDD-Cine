@@ -1,17 +1,19 @@
-package co.com.sofka.DDDCine.generics.value;
+package co.com.sofka.DDDCine.ticket.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Nombre implements ValueObject<String> {
+public class TipodePago implements ValueObject<String> {
     private final String value;
-    public Nombre(String value){
-        this.value= Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("el nombre no puede estar vacio");
+
+    public TipodePago(String value) {
+        this.value = Objects.requireNonNull(value);
+        if (this.value.isBlank()) {
+            throw new IllegalArgumentException("El tipo de pago  no puede estar vacio");
         }
     }
+
 
 
     public String value() {
@@ -22,8 +24,8 @@ public class Nombre implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Nombre nombre = (Nombre) o;
-        return Objects.equals(value, nombre.value);
+        TipodePago that = (TipodePago) o;
+        return Objects.equals(value, that.value);
     }
 
     @Override
