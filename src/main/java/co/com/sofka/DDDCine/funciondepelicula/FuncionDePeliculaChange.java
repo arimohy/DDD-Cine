@@ -12,6 +12,12 @@ public class FuncionDePeliculaChange extends EventChange {
             funcionDePelicula.sala= event.getSala();
             funcionDePelicula.horario=event.getHorario();
         });
+        apply((SalaAgregada event)->{
+            funcionDePelicula.sala= new Sala(event.getSalaId(),event.getNombreSala(),event.getCapacidad());
+        });
+        apply((HorarioAgregado event)->{
+            funcionDePelicula.horario= new Horario(event.getHorarioId(),event.getHora(), event.getFecha());
+        });
         apply((NombreDeSalaActualizada event)->{
             funcionDePelicula.sala.actualizarNombreSala(event.getNombreSala());
         });
