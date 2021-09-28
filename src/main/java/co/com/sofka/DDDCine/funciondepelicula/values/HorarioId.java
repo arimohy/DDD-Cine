@@ -1,4 +1,6 @@
 package co.com.sofka.DDDCine.funciondepelicula.values;
 
-public class HorarioId {
+import co.com.sofka.domain.generic.Identity;
+
+public class HorarioId extends Identity {
 }
