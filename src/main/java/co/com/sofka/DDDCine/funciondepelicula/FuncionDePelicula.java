@@ -2,15 +2,7 @@ package co.com.sofka.DDDCine.funciondepelicula;
 
 import co.com.sofka.DDDCine.funciondepelicula.events.*;
 import co.com.sofka.DDDCine.funciondepelicula.values.*;
-import co.com.sofka.DDDCine.generics.value.Nombre;
-import co.com.sofka.DDDCine.pelicula.Pelicula;
-import co.com.sofka.DDDCine.pelicula.PeliculaChange;
-import co.com.sofka.DDDCine.pelicula.events.ActorAgregado;
-import co.com.sofka.DDDCine.pelicula.events.AutorAgregado;
-import co.com.sofka.DDDCine.pelicula.events.NombreDeActorActualizada;
-import co.com.sofka.DDDCine.pelicula.events.PeliculaCreada;
-import co.com.sofka.DDDCine.pelicula.values.ActorId;
-import co.com.sofka.DDDCine.pelicula.values.AutorId;
+
 import co.com.sofka.DDDCine.pelicula.values.PeliculaId;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
@@ -36,6 +28,9 @@ public class FuncionDePelicula extends AggregateEvent<FuncionDePeliculaId> {
         var funcionDePelicula=new FuncionDePelicula(funcionDePeliculaId);
         events.forEach(funcionDePelicula::applyEvent);
         return funcionDePelicula;
+    }
+    public void AsociarPelicula(PeliculaId peliculaId){
+        appendChange(new PeliculaAsociada(peliculaId)).apply();
     }
     public void agregarSala(SalaId entityId, NombreSala nombreSala, Capacidad capacidad){
         Objects.requireNonNull(entityId);
